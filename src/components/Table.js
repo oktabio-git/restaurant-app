@@ -1,6 +1,41 @@
-const Table = () => {
+import _ from "lodash";
+
+export default function Table({data, ingredients, setIngredients }) {
+    const Ingredient = ({
+        id,
+        name,
+        category,
+        quantity,
+        unit,
+        deleteIngredient,
+    }) => {
+        return (
+            <tr key={id}>
+                <th scope="row">{id}</th>
+                <td>{name}</td>
+                <td>{category}</td>
+                <td>{quantity}</td>
+                <td>{unit}</td>
+                <td>
+                    <button
+                        className="btn btn-danger mt-3 me-2"
+                        onClick={() => deleteIngredient(id)}
+                    >
+                        Disabled
+                    </button>
+                </td>
+            </tr>
+        );
+    };
+
+    const deleteIngredient = (id) => {
+        setIngredients(
+            ingredients.filter((ingredient) => ingredient.id !== id)
+        );
+    };
+
     return (
-        <table class="table">
+        <table className="table text-start">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -11,15 +46,24 @@ const Table = () => {
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Tomato</td>
-                    <td>Vegetables & Fruits</td>
-                    <td>1</td>
-                    <td>Kilograms</td>
-                </tr>
+                {!_.isEmpty(ingredients) ? (
+                    ingredients.map((ingredient) => (
+                        <Ingredient
+                            key={ingredient.id}
+                            {...ingredient}
+                            deleteIngredient={deleteIngredient}
+                        />
+                    ))
+                ) : (
+                    <tr>
+                        <td colSpan="5">
+                            {" "}
+                            Not ingredients available yet. Please add new
+                            ingredients to the fridge.
+                        </td>
+                    </tr>
+                )}
             </tbody>
         </table>
     );
-};
-export default Table;
+}

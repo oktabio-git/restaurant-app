@@ -6,3 +6,20 @@
 @import "~bootstrap/scss/bootstrap.scss";
 
 // Then add additional custom code here
+
+.invalid-field {
+    text-align: left;
+    margin-top: 0.25rem;
+    font-size: 0.875em;
+    color: var(--bs-form-invalid-color);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.fs-7 {
+    font-size: 0.8rem;
+}

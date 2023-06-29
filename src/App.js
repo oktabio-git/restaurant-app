@@ -3,11 +3,12 @@ import Home from "./components/Home";
 import Fridge from "./components/Fridge";
 import "./App.css";
 import React from "react";
-import categories from "./categories.json";
-import units from "./units.json";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import useLocalStorage from "./hooks/useLocalStorage";
 
 export default function App() {
+    const [ingredients, setIngredients] = useLocalStorage("ingredients", []);
+
     return (
         <div className="App">
             <Navbar />

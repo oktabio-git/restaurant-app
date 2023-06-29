@@ -2,9 +2,9 @@ import React from "react";
 
 function Navbar() {
     return (
-        <nav class="navbar bg-body-tertiary">
-            <div class="container-fluid">
-                <span class="navbar-brand mb-0 h1">Navbar</span>
+        <nav className="navbar bg-body-tertiary">
+            <div className="container-fluid">
+                <span className="navbar-brand mb-0 h1">Navbar</span>
             </div>
         </nav>
     );
